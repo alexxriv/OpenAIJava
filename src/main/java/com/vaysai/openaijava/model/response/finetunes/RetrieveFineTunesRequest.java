@@ -4,13 +4,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListFineTunesResponse {
-    private String object;
-    private List<Object> data;//Pendiente el tipo
+public class RetrieveFineTunesRequest {
+    private String fine_tune_id;
 }

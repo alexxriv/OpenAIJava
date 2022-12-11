@@ -25,10 +25,7 @@ import com.vaysai.openaijava.model.response.models.RetrieveModelResponse;
 import com.vaysai.openaijava.model.response.moderations.CreateModerationsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @FeignClient(name = "openAIApi", url = "${openAIApi.url}", configuration = OpenAIFeignConfig.class)
@@ -111,10 +108,18 @@ public interface OpenAIClient {
 
 
 
-    @PostMapping(value="embeddings",consumes = "application/json")
+    @PostMapping(value="/embeddings",consumes = "application/json")
     CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
 
-    @PostMapping(value="moderations",consumes = "application/json")
+    @PostMapping(value="/moderations",consumes = "application/json")
     CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
 
+    @PostMapping(value="/fine-tunes",consumes = "application/json")
+    CreateFineTuneResponse createFineTunes(CreateFineTuneRequest createFineTuneRequest);
+
+    @Mapping(values="/fine-tunes",consumes = "application/json")
+    ListFineTunesResponse listFineTunes(ListFineTunesRequest listFineTunesRequest);
+
+    @Mapping(values="//fine-tunes/{fine_tune_id}",consumes = "application/json")
+    RetrieveFineTunesResponse retrieveFineTunes(RetrieveFineTunesRequest retrieveFineTunesRequest);
 }
