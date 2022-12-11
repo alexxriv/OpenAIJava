@@ -1,16 +1,19 @@
 package com.vaysai.openaijava.model.finetunes;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FineTuneEvent {
 
     private String object;
 
-    @ToString.Include(name="created_at")
+    @JsonProperty("created_at")
     private String createdAt;
     private String level;
     private String message;

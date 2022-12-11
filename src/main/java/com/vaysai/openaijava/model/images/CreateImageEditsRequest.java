@@ -1,10 +1,13 @@
 package com.vaysai.openaijava.model.images;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateImageEditsRequest {
 
     /**
@@ -29,8 +32,8 @@ public class CreateImageEditsRequest {
     /**
      * The number of images to generate. Must be between 1 and 10.
      */
-    @ToString.Include(name="number_of_images")
-    private int numberOfImages;
+    @JsonProperty("number_of_images")
+    private Integer numberOfImages;
 
     /**
      * The format in which the generated images are returned. Must be one of url or b64_json
@@ -40,7 +43,7 @@ public class CreateImageEditsRequest {
     /**
      * The format in which the generated images are returned. Must be one of url or b64_json
      */
-    @ToString.Include(name="response_format")
+    @JsonProperty("response_format")
     private String responseFormat;
 
     /**

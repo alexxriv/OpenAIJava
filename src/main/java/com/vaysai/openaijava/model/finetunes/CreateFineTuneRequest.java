@@ -1,4 +1,6 @@
 package com.vaysai.openaijava.model.finetunes;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateFineTuneRequest {
 
     /**
@@ -18,7 +21,7 @@ public class CreateFineTuneRequest {
      * Additionally, you must upload your file with the purpose fine-tune
      */
     @NonNull
-    @ToString.Include(name="training_file")
+    @JsonProperty("training_file")
     private String trainingFile;
 
     /**
@@ -27,7 +30,7 @@ public class CreateFineTuneRequest {
      * If you provide this file, the data is used to generate validation metrics periodically during fine-tuning.
      * These metrics can be viewed in the fine-tuning results file. Your train and validation data should be mutually exclusive.
      */
-    @ToString.Include(name="validation_file")
+    @JsonProperty("validation_file")
     private String validationFile;
 
     /**
@@ -40,7 +43,7 @@ public class CreateFineTuneRequest {
     /**
      * The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
      */
-    @ToString.Include(name="n_epochs")
+    @JsonProperty("n_epochs")
     private Integer nEpochs;
 
     /**
@@ -50,14 +53,14 @@ public class CreateFineTuneRequest {
      * By default, the batch size will be dynamically configured to be ~0.2% of the number of examples in the training set,
      * capped at 256 - in general, we've found that larger batch sizes tend to work better for larger datasets.
      */
-    @ToString.Include(name="batch_size")
+    @JsonProperty("batch_size")
     private Integer batchSize;
 
     /**
      * The learning rate multiplier to use for training.
      * The fine-tuning learning rate is the original learning rate used for pretraining multiplied by this value.
      */
-    @ToString.Include(name="learning_rate_multiplier")
+    @JsonProperty("learning_rate_multiplier")
     private Double learningRateMultiplier;
 
     /**
@@ -66,14 +69,14 @@ public class CreateFineTuneRequest {
      * and can add a stabilizing effect to training when completions are short.
      *
      */
-    @ToString.Include(name="prompt_loss_weight")
+    @JsonProperty("prompt_loss_weight")
     private Double promptLossWeight;
 
     /**
      * If set, we calculate classification-specific metrics such as accuracy and F-1 score using the validation set at the end of every epoch.
      * These metrics can be viewed in the results file.
      */
-    @ToString.Include(name="compute_classification_metrics")
+    @JsonProperty("compute_classification_metrics")
     private Boolean computeClassificationMetrics;
 
     /**
@@ -82,7 +85,7 @@ public class CreateFineTuneRequest {
      *
      * This parameter is required for multiclass classification.
      */
-    @ToString.Include(name="classification_n_classes")
+    @JsonProperty("classification_n_classes")
     private Integer classificationNClasses;
 
     /**
@@ -91,7 +94,7 @@ public class CreateFineTuneRequest {
      * This parameter is needed to generate precision, recall, and F1 metrics when doing binary classification.
      *
      */
-    @ToString.Include(name="classification_positive_class")
+    @JsonProperty("classification_positive_class")
     private String classificationPositiveClass;
 
 
@@ -100,7 +103,7 @@ public class CreateFineTuneRequest {
      * If this is provided, we calculate F-beta scores at the specified beta values.
      * The F-beta score is a generalization of F-1 score. This is only used for binary classification.
      */
-    @ToString.Include(name="classification_betas")
+    @JsonProperty("classification_betas")
     private List<String> classificationBetas;
 
     /**

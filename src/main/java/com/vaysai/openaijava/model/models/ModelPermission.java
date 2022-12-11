@@ -1,5 +1,7 @@
 package com.vaysai.openaijava.model.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,35 +11,33 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModelPermission {
     private String id;
     private String object;
     private String created;
-    private String allow_create_engine;
-    private String allow_sampling;
-    private String allow_logprobs;
-    private String allow_search_indices;
-    private String allow_view;
-    private String allow_fine_tunning;
+
+    @JsonProperty("allow_create_engine")
+    private String allowCreateEngine;
+
+    @JsonProperty("allow_sampling")
+    private String allowSampling;
+
+    @JsonProperty("allow_logprobs")
+    private String allowLogprobs;
+
+    @JsonProperty("allow_search_indices")
+    private String allowSearchIndices;
+
+    @JsonProperty("allow_view")
+    private String allowView;
+
+    @JsonProperty("allow_fine_tunning")
+    private String allowFineTunning;
+
     private String organization;
     private String group;
-    private String is_blocking;
+
+    @JsonProperty("is_blocking")
+    private String isBlocking;
 }
-
-
-/*
-    {
-      "id": "modelperm-Example",
-      "object": "model_permission",
-      "created": 1670634735,
-      "allow_create_engine": false,
-      "allow_sampling": true,
-      "allow_logprobs": true,
-      "allow_search_indices": false,
-      "allow_view": true,
-      "allow_fine_tuning": false,
-      "organization": "*",
-      "group": null,
-      "is_blocking": false
-    }
- */

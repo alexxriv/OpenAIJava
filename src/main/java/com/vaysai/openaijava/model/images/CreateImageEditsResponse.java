@@ -1,4 +1,5 @@
-package com.vaysai.openaijava.model.images.response;
+package com.vaysai.openaijava.model.images;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateImageResponse {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CreateImageEditsResponse {
     private String created;
     private List<ImageUrl> data;
 }

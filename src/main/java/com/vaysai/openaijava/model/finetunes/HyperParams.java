@@ -1,22 +1,25 @@
 package com.vaysai.openaijava.model.finetunes;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class HyperParams {
 
-    @ToString.Include(name="batch_size")
-    private int batchSize;
+    @JsonProperty("batch_size")
+    private Integer batchSize;
 
-    @ToString.Include(name="learning_rate_multiplier")
-    private double learningRateMultiplier;
+    @JsonProperty("learning_rate_multiplier")
+    private Double learningRateMultiplier;
 
-    @ToString.Include(name="n_epochs")
-    private int nEpochs;
+    @JsonProperty("n_epochs")
+    private Integer nEpochs;
 
-    @ToString.Include(name="prompt_loss_weigh")
-    private double promptLossWeight;
+    @JsonProperty("prompt_loss_weigh")
+    private Double promptLossWeight;
 }

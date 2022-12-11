@@ -1,6 +1,7 @@
 package com.vaysai.openaijava.model.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,9 @@ public class Model {
     private String id;
     private String object;
     private String created;
-    private String owned_by;
+
+    @JsonProperty("owned_by")
+    private String ownedBy;
     private List<ModelPermission> permission;
 
     //This two params missing in openAI docs 11-12-2022

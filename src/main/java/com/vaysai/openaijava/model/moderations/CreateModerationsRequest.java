@@ -1,10 +1,13 @@
 package com.vaysai.openaijava.model.moderations;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateModerationsRequest {
 
     /**
@@ -32,23 +35,23 @@ public class CreateModerationsRequest {
      * The token count of your prompt plus max_tokens cannot exceed the model's context length.
      * Most models have a context length of 2048 tokens (except for the newest models, which support 4096).
      */
-    @ToString.Include(name="max_tokens")
-    private String maxTokens;
+    @JsonProperty("max_tokens")
+    private Integer maxTokens;
 
     /**
      * What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.
      *
      * We generally recommend altering this or top_p but not both.
      */
-    private String temperature;
+    private Double temperature;
 
     /**
      * An alternative to sampling with temperature, called nucleus sampling,
      * where the model considers the results of the tokens with top_p probability mass.
      * So 0.1 means only the tokens comprising the top 10% probability mass are considered.
      */
-    @ToString.Include(name="top_n")
-    private String topN;
+    @JsonProperty("top_n")
+    private Double topN;
 
     /**
      * How many completions to generate for each prompt.
@@ -56,7 +59,7 @@ public class CreateModerationsRequest {
      * Note: Because this parameter generates many completions,
      * it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for max_tokens and stop.
      */
-    private String n;
+    private Integer n;
 
     /**
      * Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they become available,
@@ -69,8 +72,8 @@ public class CreateModerationsRequest {
      * the API will return a list of the 5 most likely tokens. The API will always return the logprob of the sampled token,
      * so there may be up to logprobs+1 elements in the response.
      */
-    @ToString.Include(name="logprobs")
-    private String logProbabilities;
+    @JsonProperty("logprobs")
+    private Integer logProbabilities;
 
 
     /**
@@ -86,19 +89,19 @@ public class CreateModerationsRequest {
     /**
      * Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
      */
-    @ToString.Include(name="presence_penalty")
-    private String presencePenalty;
+    @JsonProperty("presence_penalty")
+    private Double presencePenalty;
 
     /**
      * Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
      */
-    @ToString.Include(name="best_of")
-    private String bestOf;
+    @JsonProperty("best_of")
+    private Double bestOf;
 
     /**
      * Generates best_of completions server-side and returns the "best" (the one with the highest log probability per token). Results cannot be streamed.
      */
-    @ToString.Include(name="logit_bias")
+    @JsonProperty("logit_bias")
     private String logitBias;
 
     /**

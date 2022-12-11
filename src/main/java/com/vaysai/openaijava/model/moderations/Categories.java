@@ -1,29 +1,32 @@
 package com.vaysai.openaijava.model.moderations;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Categories {
 
-    private boolean hate;
+    private Boolean hate;
 
-    @ToString.Include(name="hate/threatening")
-    private boolean hateOrThreatening;
+    @JsonProperty("hate/threatening")
+    private Boolean hateOrThreatening;
 
-    @ToString.Include(name="self-harm")
-    private boolean selfHarm;
+    @JsonProperty("self-harm")
+    private Boolean selfHarm;
 
-    @ToString.Include(name="sexual")
-    private boolean sexual;
+    @JsonProperty("sexual")
+    private Boolean sexual;
 
-    @ToString.Include(name="sexual/minors")
-    private boolean sexualMinors;
+    @JsonProperty("sexual/minors")
+    private Boolean sexualMinors;
 
-    private boolean violence;
+    private Boolean violence;
 
-    @ToString.Include(name="violence/graphic")
-    private boolean violenceOrGraphic;
+    @JsonProperty("violence/graphic")
+    private Boolean violenceOrGraphic;
 }
