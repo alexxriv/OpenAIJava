@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FeignClientInterceptor implements RequestInterceptor {
 
-    @Value("${name}")
+    @Value("${openAI.api.key}")
     private final String openAIApiKey;
 
 

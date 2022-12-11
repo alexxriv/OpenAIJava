@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ListModelsResponse {
     //order was wrong in openAI docs 11-12-2022
+
     private String object;
     private List<Model> data;
 }
