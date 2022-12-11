@@ -1,0 +1,34 @@
+
+spring:
+  application:
+    name: openAI-api-client
+
+---
+
+spring:
+  profiles: dev, stage
+
+feign:
+  client:
+    config:
+      openAIApi:
+        connect-timeout: 2000
+        read-timeout: 4000
+
+openAIApi:
+  url: https://api.openai.com/v1
+
+---
+
+spring:
+  profiles: prod
+
+feign:
+  client:
+    config:
+      openaiapi:
+        connect-timeout: 1000
+        read-timeout: 2000
+
+openaiapi:
+  url: https://api.openai.com/v1
