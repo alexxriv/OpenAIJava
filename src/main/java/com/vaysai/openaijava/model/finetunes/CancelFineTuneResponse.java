@@ -4,9 +4,6 @@ import lombok.*;
 
 
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class CancelFineTuneResponse  extends FineTune{
 
 

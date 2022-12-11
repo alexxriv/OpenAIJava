@@ -6,11 +6,13 @@
 	<artifactId>openAIJava</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>openAIJava</name>
+
 	<description>OpenAI library client</description>
 	<packaging>jar</packaging>
 
 
 	<properties>
+		<spring-version>6.0.2</spring-version>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
 		<maven.compiler.source>17</maven.compiler.source>
@@ -18,6 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
 		<dependency>
@@ -25,18 +28,6 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 			<version>3.1.5</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-client</artifactId>
-			<version>5.6.0</version>
-		</dependency>
-
 
 		<!-- https://mvnrepository.com/artifact/io.github.openfeign.form/feign-form -->
 		<dependency>
@@ -53,15 +44,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-
-
+		<!--TEST -->
 
 	</dependencies>
 

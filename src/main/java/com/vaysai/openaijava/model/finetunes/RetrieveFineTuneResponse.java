@@ -4,8 +4,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 public class RetrieveFineTuneResponse extends FineTune{
 
 

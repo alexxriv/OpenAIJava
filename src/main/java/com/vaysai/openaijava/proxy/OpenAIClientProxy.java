@@ -16,7 +16,7 @@ public class OpenAIClientProxy {
     public OpenAIClientResponse<ListModelsResponse> getModels() {
         ListModelsResponse response;
         try {
-            response = openAIClient.getModels();
+            response = openAIClient.listModels();
         } catch (Exception exception) {
             return getErrorResponse(exception.getMessage());
         }

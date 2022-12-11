@@ -27,7 +27,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@FeignClient(name = "openAIApi", url = "${openAIApi.url}", configuration = OpenAIFeignConfig.class)
+@FeignClient(name = "openAIApi", url = "${openAIApi.url}")
 public interface OpenAIClient {
 
     //Models
