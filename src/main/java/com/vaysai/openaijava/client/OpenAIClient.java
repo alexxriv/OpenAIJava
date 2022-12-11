@@ -2,15 +2,25 @@ package com.vaysai.openaijava.client;
 
 import com.vaysai.openaijava.model.request.completion.CompletionRequest;
 import com.vaysai.openaijava.model.request.edits.EditsRequest;
+import com.vaysai.openaijava.model.request.embeddings.CreateEmbeddingsRequest;
 import com.vaysai.openaijava.model.request.files.UploadFileRequest;
+import com.vaysai.openaijava.model.request.images.CreateImageEditsRequest;
+import com.vaysai.openaijava.model.request.images.CreateImageRequest;
+import com.vaysai.openaijava.model.request.images.CreateImageVariationsRequest;
+import com.vaysai.openaijava.model.request.moderations.CreateModerationsRequest;
 import com.vaysai.openaijava.model.response.completions.CompletionResponse;
 import com.vaysai.openaijava.model.response.edits.EditsResponse;
+import com.vaysai.openaijava.model.response.embeddings.CreateEmbeddingsResponse;
 import com.vaysai.openaijava.model.response.files.DeleteFileResponse;
 import com.vaysai.openaijava.model.response.files.ListFilesResponse;
 import com.vaysai.openaijava.model.response.files.RetrieveFileResponse;
 import com.vaysai.openaijava.model.response.files.UploadFilesResponse;
+import com.vaysai.openaijava.model.response.images.CreateImageEditsResponse;
+import com.vaysai.openaijava.model.response.images.CreateImageResponse;
+import com.vaysai.openaijava.model.response.images.CreateImageVariationsResponse;
 import com.vaysai.openaijava.model.response.models.ListModelsResponse;
 import com.vaysai.openaijava.model.response.models.RetrieveModelResponse;
+import com.vaysai.openaijava.model.response.moderations.CreateModerationsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -64,7 +74,7 @@ public interface OpenAIClient {
     CancelFineTuneResponse cancelFineTune(@PathVariable("fine_tune_id") String fineTuneId);
 
     @GetMapping(value="/fine-tunes/{fine_tune_id}/events", consumes = "application/json")
-    Ca
+    ListFineTuneEvents listFineTunes(@PathVariable("fine_tune_id") String fineTuneId);
 
     @PostMapping(value="/images/generations",consumes = "application/json")
     CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
@@ -76,7 +86,8 @@ public interface OpenAIClient {
     CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
 
     @PostMapping(value="embeddings",consumes = "application/json")
-    CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
+    CreateEmbeddingsResponse createEmbeddings(CreateEmbe
+                                                      ddingsRequest createEmbeddingsRequest);
 
     @PostMapping(value="moderations",consumes = "application/json")
     CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
