@@ -2,7 +2,7 @@ package com.vaysai.openaijava.proxy;
 
 import com.vaysai.openaijava.client.OpenAIClient;
 import com.vaysai.openaijava.model.OpenAIClientResponse;
-import com.vaysai.openaijava.model.response.models.ListModelsResponse;
+import com.vaysai.openaijava.model.models.ListModelsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
