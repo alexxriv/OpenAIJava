@@ -1,6 +1,8 @@
-package com.vaysai.openaijava.model.response.completion;
+package com.vaysai.openaijava.model.response.completions;
 
 
+import com.vaysai.openaijava.model.response.Choice;
+import com.vaysai.openaijava.model.response.Usage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +22,6 @@ public class CompletionResponse {
     private List<Choice> choices;
     private Usage usage;
 }
-
 /*
 {
     "id": "cmpl-GERzeJQ4lvqPk8SkZu4XMIuR",

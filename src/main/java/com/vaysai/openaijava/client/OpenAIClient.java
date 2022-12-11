@@ -1,7 +1,9 @@
 package com.vaysai.openaijava.client;
 
 import com.vaysai.openaijava.model.request.completion.CompletionRequest;
-import com.vaysai.openaijava.model.response.completion.CompletionResponse;
+import com.vaysai.openaijava.model.request.edits.EditsRequest;
+import com.vaysai.openaijava.model.response.completions.CompletionResponse;
+import com.vaysai.openaijava.model.response.edits.EditsResponse;
 import com.vaysai.openaijava.model.response.models.ModelsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,5 +16,8 @@ public interface OpenAIClient {
     ModelsResponse getModels();
 
     @PostMapping(value = "/completions", consumes = "application/json")
-    CompletionResponse postCompletion(CompletionRequest completionRequest);
+    CompletionResponse postCompletions(CompletionRequest completionRequest);
+
+    @PostMapping(value="/edits", consumes = "application/json")
+    EditsResponse postEdits(EditsRequest editsRequest);
 }
