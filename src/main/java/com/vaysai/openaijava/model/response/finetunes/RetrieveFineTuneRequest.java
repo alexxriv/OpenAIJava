@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RetrieveFineTunesRequest {
+public class RetrieveFineTuneRequest {
     private String fine_tune_id;
 }

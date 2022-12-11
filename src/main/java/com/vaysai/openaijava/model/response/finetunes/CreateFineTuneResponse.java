@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class CreateFineTuneResponse {
         private String fine_tuned_model;
         //private hyperparams PENDIENTE
         private String organization_id;
-        private List<Object>result_files;//Pendiente el tipo
+        private List<Object> result_files;//Pendiente el tipo
         private String status;
         private List<Object>validation_files;//Pendiente el tipo
         private List<Object> training_files;//Pendiente el tipo

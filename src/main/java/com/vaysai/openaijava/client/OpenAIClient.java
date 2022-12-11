@@ -15,8 +15,7 @@ import com.vaysai.openaijava.model.response.files.DeleteFileResponse;
 import com.vaysai.openaijava.model.response.files.ListFilesResponse;
 import com.vaysai.openaijava.model.response.files.RetrieveFileResponse;
 import com.vaysai.openaijava.model.response.files.UploadFilesResponse;
-import com.vaysai.openaijava.model.response.finetunes.CancelFineTuneResponse;
-import com.vaysai.openaijava.model.response.finetunes.ListFineTunesResponse;
+import com.vaysai.openaijava.model.response.finetunes.*;
 import com.vaysai.openaijava.model.response.images.CreateImageEditsResponse;
 import com.vaysai.openaijava.model.response.images.CreateImageResponse;
 import com.vaysai.openaijava.model.response.images.CreateImageVariationsResponse;
@@ -71,6 +70,10 @@ public interface OpenAIClient {
     CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
 
 
+    //Embeddings
+    @PostMapping(value="/embeddings",consumes = "application/json")
+    CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
+
 
     @GetMapping(value="/files", consumes = "application/json")
     ListFilesResponse listFiles();
@@ -92,7 +95,7 @@ public interface OpenAIClient {
     CreateFineTuneResponse createFileTune(CreateFineTuneRequest createFileTuneRequest);
 
     @GetMapping(value="/fine-tunes", consumes="application/json")
-    ListFineTunesResponse listFineTunes();
+    ListFineTuneResponse listFineTunes();
 
     @GetMapping(value="/fine-tunes/{fine_tune_id}", consumes = "application/json")
     RetrieveFineTuneResponse retrieveFineTune(@PathVariable("fine_tune_id") String fineTuneId);
@@ -101,15 +104,11 @@ public interface OpenAIClient {
     CancelFineTuneResponse cancelFineTune(@PathVariable("fine_tune_id") String fineTuneId);
 
     @GetMapping(value="/fine-tunes/{fine_tune_id}/events", consumes = "application/json")
-    ListFineTuneEvents listFineTunes(@PathVariable("fine_tune_id") String fineTuneId);
+    ListFineTuneEventsResponse listFineTunes(@PathVariable("fine_tune_id") String fineTuneId);
 
     @DeleteMapping(value="/models/{model}", consumes = "application/json")
-    DeleteFineTuneModel deleteFineTuneModel(@PathVariable("model") String model);
+    DeleteFineTuneModelResponse deleteFineTuneModel(@PathVariable("model") String model);
 
-
-
-    @PostMapping(value="/embeddings",consumes = "application/json")
-    CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
 
     @PostMapping(value="/moderations",consumes = "application/json")
     CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
@@ -117,9 +116,4 @@ public interface OpenAIClient {
     @PostMapping(value="/fine-tunes",consumes = "application/json")
     CreateFineTuneResponse createFineTunes(CreateFineTuneRequest createFineTuneRequest);
 
-    @Mapping(values="/fine-tunes",consumes = "application/json")
-    ListFineTunesResponse listFineTunes(ListFineTunesRequest listFineTunesRequest);
-
-    @Mapping(values="//fine-tunes/{fine_tune_id}",consumes = "application/json")
-    RetrieveFineTunesResponse retrieveFineTunes(RetrieveFineTunesRequest retrieveFineTunesRequest);
 }

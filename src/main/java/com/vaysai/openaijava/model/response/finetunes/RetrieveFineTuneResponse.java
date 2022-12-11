@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RetrieveFineTunesResponse {
+public class RetrieveFineTuneResponse {
     private String id;
     private String object;
     private String model;
