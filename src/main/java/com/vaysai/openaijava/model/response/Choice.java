@@ -1,4 +1,4 @@
-package com.vaysai.openaijava.model.response.completion;
+package com.vaysai.openaijava.model.response.completions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
