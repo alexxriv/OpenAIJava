@@ -2,7 +2,7 @@ package com.vaysai.openaijava.proxy;
 
 import com.vaysai.openaijava.client.OpenAIClient;
 import com.vaysai.openaijava.model.OpenAIClientResponse;
-import com.vaysai.openaijava.model.response.models.ModelsResponse;
+import com.vaysai.openaijava.model.response.models.ListModelsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 public class OpenAIClientProxy {
     private final OpenAIClient openAIClient;
 
-    public OpenAIClientResponse<ModelsResponse> getModels() {
-        ModelsResponse response;
+    public OpenAIClientResponse<ListModelsResponse> getModels() {
+        ListModelsResponse response;
         try {
             response = openAIClient.getModels();
         } catch (Exception exception) {
@@ -27,15 +27,15 @@ public class OpenAIClientProxy {
 
         log.info("getModels() request received. Response: {}", response);
 
-        return OpenAIClientResponse.<ModelsResponse>builder()
+        return OpenAIClientResponse.<ListModelsResponse>builder()
                 .data(response)
                 .build();
     }
 
-    private OpenAIClientResponse<ModelsResponse> getErrorResponse(String errorDescription) {
+    private OpenAIClientResponse<ListModelsResponse> getErrorResponse(String errorDescription) {
         log.info("getModels request received but an error occurred. Error: {}", errorDescription);
 
-        return OpenAIClientResponse.<ModelsResponse>builder()
+        return OpenAIClientResponse.<ListModelsResponse>builder()
                 .error(true)
                 .errorDescription(errorDescription)
                 .build();

@@ -10,7 +10,7 @@ import java.util.List;
 @lombok.Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ModelsResponse {
+public class ListModelsResponse {
     private List<Data> data;
     private String object;
 }
