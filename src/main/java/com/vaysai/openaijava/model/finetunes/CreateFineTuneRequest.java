@@ -1,24 +1,46 @@
 package com.vaysai.openaijava.model.finetunes;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateFineTuneRequest {
-    private String training_file;
-    private String validation_file;
+
+    @NonNull
+    @ToString.Include(name="training_file")
+    private String trainingFile;
+
+    @ToString.Include(name="validation_file")
+    private String validationFile;
+
     private String model;
-    private Integer n_epochs;
-    private Integer batch_size;
-    private Double learning_rate_multiplier;
-    private Double prompt_loss_weight;
-    private Boolean compute_classification_metrics;
-    private Integer classification_n_classes;
-    private String classification_positive_class;
-    //private Array classification_betas;
+
+    @ToString.Include(name="n_epochs")
+    private Integer nEpochs;
+
+    @ToString.Include(name="batch_size")
+    private Integer batchSize;
+
+    @ToString.Include(name="learning_rate_multiplier")
+    private Double learningRateMultiplier;
+
+    @ToString.Include(name="prompt_loss_weight")
+    private Double promptLossWeight;
+
+    @ToString.Include(name="compute_classification_metrics")
+    private Boolean computeClassificationMetrics;
+
+    @ToString.Include(name="classification_n_classes")
+    private Integer classificationNClasses;
+
+    @ToString.Include(name="classification_positive_class")
+    private String classificationPositiveClass;
+
+    @ToString.Include(name="classification_betas")
+    private List<String> classificationBetas;
+
     private String suffix;
 }

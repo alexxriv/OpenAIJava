@@ -1,17 +1,17 @@
 package com.vaysai.openaijava.model.finetunes;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FineTuneEvent {
-    private String fineTuneEvent;
-    private String created_at;
+
+    private String object;
+
+    @ToString.Include(name="created_at")
+    private String createdAt;
     private String level;
     private String message;
 }

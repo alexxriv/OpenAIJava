@@ -6,23 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RetrieveFileResponse {
-
-    private String id;
-    private String object;
-    private String created_at;
-    private String filename;
-    private String purpose;
+public class RetrieveFileResponse extends File {
 }
 
 
 /*
 {
-  "id": "file-XjGxS3KTG0uNmNOK362iJua3",
+  "id": "file-generatedNumber",
   "object": "file",
   "bytes": 140,
   "created_at": 1613779657,

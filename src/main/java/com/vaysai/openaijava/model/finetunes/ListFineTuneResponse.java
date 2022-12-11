@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 public class ListFineTuneResponse {
     private String object;
-    private List<Object> data;//Pendiente el tipo
+    private List<FineTune> data;//Pendiente el tipo
 }

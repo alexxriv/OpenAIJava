@@ -1,10 +1,17 @@
 package com.vaysai.openaijava.model.files;
 
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class UploadFilesResponse {
     private String id;
     private String object;
     private String bytes;
-    private String created_at;
+    @ToString.Include(name="created_at")
+    private String createdAt;
     private String filename;
     private String purpose;
 }

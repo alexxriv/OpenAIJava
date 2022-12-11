@@ -20,7 +20,7 @@ public class DeleteFineTuneModelResponse {
 
 /*
 {
-  "id": "curie:ft-acmeco-2021-03-03-21-44-20",
+  "id": "curie:ft-data",
   "object": "model",
   "deleted": true
 }

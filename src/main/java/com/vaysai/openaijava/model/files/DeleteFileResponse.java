@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class DeleteFileResponse {
     private String id;
     private String object;
-    private String deleted;
+    private boolean deleted;
 }
 
 /*

@@ -1,9 +1,6 @@
 package com.vaysai.openaijava.model.files;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -13,7 +10,9 @@ public class File {
     private String id;
     private String object;
     private String bytes;
-    private String created_at;
+
+    @ToString.Include(name="created_at")
+    private String createdAt;
     private String filename;
     private String purpose;
 }

@@ -1,14 +1,14 @@
 package com.vaysai.openaijava.model.moderations;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateModerationsRequest {
+
+    @NonNull
     private String input;
+
     private String model;
 }
