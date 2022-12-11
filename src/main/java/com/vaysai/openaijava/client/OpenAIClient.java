@@ -64,7 +64,7 @@ public interface OpenAIClient {
     CreateFineTuneResponse createFileTune(CreateFineTuneRequest createFileTuneRequest);
 
 
-    @GetMapping(value="/fine-tunes", content="application/json")
+    @GetMapping(value="/fine-tunes", consumes="application/json")
     ListFineTunesResponse listFineTunes();
 
     @GetMapping(value="/fine-tunes/{fine_tune_id}", consumes = "application/json")
@@ -86,8 +86,7 @@ public interface OpenAIClient {
     CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
 
     @PostMapping(value="embeddings",consumes = "application/json")
-    CreateEmbeddingsResponse createEmbeddings(CreateEmbe
-                                                      ddingsRequest createEmbeddingsRequest);
+    CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
 
     @PostMapping(value="moderations",consumes = "application/json")
     CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
