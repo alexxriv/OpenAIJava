@@ -1,15 +1,17 @@
 package com.vaysai.openaijava.model.embeddings;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateEmbeddingsRequest {
+
+    @NonNull
     private String model;
+
+    @NonNull
     private String input;
+
     private String user;
 }

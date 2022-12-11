@@ -1,19 +1,24 @@
 package com.vaysai.openaijava.model.images;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateImageEditsRequest {
+
+    @NonNull
     private String image;
     private String mask;
+
+    @NonNull
     private String prompt;
-    private Integer n;
+
+    @ToString.Include(name="number_of_images")
+    private int numberOfImages;
     private String size;
-    private String response_format;
+
+    @ToString.Include(name="response_format")
+    private String responseFormat;
     private String user;
 }

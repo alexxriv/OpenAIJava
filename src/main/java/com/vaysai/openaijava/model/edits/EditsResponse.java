@@ -1,7 +1,5 @@
 package com.vaysai.openaijava.model.edits;
 
-import com.vaysai.openaijava.model.Choice;
-import com.vaysai.openaijava.model.Usage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -4,11 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateImageEditsResponse {
     private String created;
-    private List<Url> data;
+    private List<ImageUrl> data;
 }

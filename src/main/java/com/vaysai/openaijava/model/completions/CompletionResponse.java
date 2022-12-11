@@ -1,8 +1,6 @@
 package com.vaysai.openaijava.model.completions;
 
 
-import com.vaysai.openaijava.model.Choice;
-import com.vaysai.openaijava.model.Usage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +22,7 @@ public class CompletionResponse {
 }
 /*
 {
-    "id": "cmpl-GERzeJQ4lvqPk8SkZu4XMIuR",
+    "id": "cmpl-generatednumber",
     "object": "text_completion",
     "created": 1586839808,
     "model": "text-davinci:003",

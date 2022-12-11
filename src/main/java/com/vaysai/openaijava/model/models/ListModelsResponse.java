@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListModelsResponse {
-    private List<Data> data;
+    //order was wrong in openAI docs 11-12-2022
     private String object;
+    private List<Model> data;
 }

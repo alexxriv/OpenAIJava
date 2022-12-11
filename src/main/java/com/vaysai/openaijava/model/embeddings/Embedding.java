@@ -8,14 +8,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class CreateEmbeddingsResponse {
-
+public class Embedding {
     private String object;
-
-    private List<Embedding> data;
-
-    private Usage usage;
+    private List<Float> embedding;
+    private int index;
 }
