@@ -32,48 +32,39 @@ public interface OpenAIClient {
 
     //Models
 
-    //GET https://api.openai.com/v1/models
     @GetMapping(value = "/models", consumes = "application/json")
     ListModelsResponse listModels();
 
-    //GET https://api.openai.com/v1/models/{model}
     @GetMapping(value = "/models", consumes = "application/json")
     RetrieveModelResponse retrieveModel();
 
 
     //Completions
-    //POST
-    //
-    //https://api.openai.com/v1/completions
+
     @PostMapping(value = "/completions", consumes = "application/json")
     CompletionResponse createCompletion(CompletionRequest completionRequest);
 
     //Edits
 
-    //POST https://api.openai.com/v1/edits
     @PostMapping(value="/edits", consumes = "application/json")
     EditsResponse createEdit(EditsRequest editsRequest);
 
     //Images
 
-    //POST https://api.openai.com/v1/images/generations
     @PostMapping(value="/images/generations",consumes = "application/json")
     CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
 
-
-    //POST https://api.openai.com/v1/images/generations
     @PostMapping(value="/images/edits",consumes = "application/json")
     CreateImageEditsResponse createImageEdits(CreateImageEditsRequest createImageEditsRequest);
 
-    //POST https://api.openai.com/v1/images/variations
     @PostMapping(value="/images/variations",consumes = "application/json")
     CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
 
 
     //Embeddings
+
     @PostMapping(value="/embeddings",consumes = "application/json")
     CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
-
 
     @GetMapping(value="/files", consumes = "application/json")
     ListFilesResponse listFiles();
@@ -81,7 +72,6 @@ public interface OpenAIClient {
     @PostMapping(value="/files", consumes = "application/json")
     UploadFilesResponse uploadFile(UploadFileRequest uploadFileRequest);
 
-    //DELETE https://api.openai.com/v1/files/{file_id}
     @DeleteMapping(value="/files/{file_id}", consumes = "application/json")
     DeleteFileResponse deleteFile(@PathVariable("file_id") String fileId);
 
