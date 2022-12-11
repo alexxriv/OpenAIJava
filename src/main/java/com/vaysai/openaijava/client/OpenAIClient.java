@@ -66,4 +66,19 @@ public interface OpenAIClient {
     @GetMapping(value="/fine-tunes/{fine_tune_id}/events", consumes = "application/json")
     Ca
 
+    @PostMapping(value="/images/generations",consumes = "application/json")
+    CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
+
+    @PostMapping(value="/images/edits",consumes = "application/json")
+    CreateImageEditsResponse createImageEdits(CreateImageEditsRequest createImageEditsRequest);
+
+    @PostMapping(value="/images/variations",consumes = "application/json")
+    CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
+
+    @PostMapping(value="embeddings",consumes = "application/json")
+    CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
+
+    @PostMapping(value="moderations",consumes = "application/json")
+    CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
+
 }
