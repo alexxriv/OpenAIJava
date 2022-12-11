@@ -15,6 +15,8 @@ import com.vaysai.openaijava.model.response.files.DeleteFileResponse;
 import com.vaysai.openaijava.model.response.files.ListFilesResponse;
 import com.vaysai.openaijava.model.response.files.RetrieveFileResponse;
 import com.vaysai.openaijava.model.response.files.UploadFilesResponse;
+import com.vaysai.openaijava.model.response.finetunes.CancelFineTuneResponse;
+import com.vaysai.openaijava.model.response.finetunes.ListFineTunesResponse;
 import com.vaysai.openaijava.model.response.images.CreateImageEditsResponse;
 import com.vaysai.openaijava.model.response.images.CreateImageResponse;
 import com.vaysai.openaijava.model.response.images.CreateImageVariationsResponse;
@@ -32,17 +34,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "openAIApi", url = "${openAIApi.url}", configuration = OpenAIFeignConfig.class)
 public interface OpenAIClient {
 
+    //Models
+
+    //GET https://api.openai.com/v1/models
     @GetMapping(value = "/models", consumes = "application/json")
     ListModelsResponse listModels();
 
+    //GET https://api.openai.com/v1/models/{model}
     @GetMapping(value = "/models", consumes = "application/json")
     RetrieveModelResponse retrieveModel();
 
+
+    //Completions
+    //POST
+    //
+    //https://api.openai.com/v1/completions
     @PostMapping(value = "/completions", consumes = "application/json")
     CompletionResponse createCompletion(CompletionRequest completionRequest);
 
+    //Edits
+
+    //POST https://api.openai.com/v1/edits
     @PostMapping(value="/edits", consumes = "application/json")
     EditsResponse createEdit(EditsRequest editsRequest);
+
+    //Images
+
+    //POST https://api.openai.com/v1/images/generations
+    @PostMapping(value="/images/generations",consumes = "application/json")
+    CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
+
+
+    //POST https://api.openai.com/v1/images/generations
+    @PostMapping(value="/images/edits",consumes = "application/json")
+    CreateImageEditsResponse createImageEdits(CreateImageEditsRequest createImageEditsRequest);
+
+    //POST https://api.openai.com/v1/images/variations
+    @PostMapping(value="/images/variations",consumes = "application/json")
+    CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
+
+
 
     @GetMapping(value="/files", consumes = "application/json")
     ListFilesResponse listFiles();
@@ -63,7 +94,6 @@ public interface OpenAIClient {
     @PostMapping(value="/fine-tunes", consumes="application/json")
     CreateFineTuneResponse createFileTune(CreateFineTuneRequest createFileTuneRequest);
 
-
     @GetMapping(value="/fine-tunes", consumes="application/json")
     ListFineTunesResponse listFineTunes();
 
@@ -76,14 +106,10 @@ public interface OpenAIClient {
     @GetMapping(value="/fine-tunes/{fine_tune_id}/events", consumes = "application/json")
     ListFineTuneEvents listFineTunes(@PathVariable("fine_tune_id") String fineTuneId);
 
-    @PostMapping(value="/images/generations",consumes = "application/json")
-    CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
+    @DeleteMapping(value="/models/{model}", consumes = "application/json")
+    DeleteFineTuneModel deleteFineTuneModel(@PathVariable("model") String model);
 
-    @PostMapping(value="/images/edits",consumes = "application/json")
-    CreateImageEditsResponse createImageEdits(CreateImageEditsRequest createImageEditsRequest);
 
-    @PostMapping(value="/images/variations",consumes = "application/json")
-    CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
 
     @PostMapping(value="embeddings",consumes = "application/json")
     CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
