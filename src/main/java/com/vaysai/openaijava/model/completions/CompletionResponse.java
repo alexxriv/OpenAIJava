@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompletionResponse {
-    private int id;
+    private String id;
     private String object;
     private String created;
     private String model;

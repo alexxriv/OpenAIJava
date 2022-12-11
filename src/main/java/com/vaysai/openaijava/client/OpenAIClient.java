@@ -35,8 +35,8 @@ public interface OpenAIClient {
     @GetMapping(value = "/models", consumes = "application/json")
     ListModelsResponse listModels();
 
-    @GetMapping(value = "/models", consumes = "application/json")
-    RetrieveModelResponse retrieveModel();
+    @GetMapping(value = "/models/{model}", consumes = "application/json")
+    RetrieveModelResponse retrieveModel(@PathVariable("model") String model);
 
 
     //Completions

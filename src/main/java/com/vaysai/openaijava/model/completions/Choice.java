@@ -1,5 +1,6 @@
 package com.vaysai.openaijava.model.completions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +12,10 @@ import lombok.ToString;
 public class Choice {
 
     private String text;
-    private int index;
-    private int logprobs;
+    private Integer index;
+    private Integer logprobs;
 
-    @ToString.Include(name="finish_reason")
+    @JsonProperty("finish_reason")
     private String finishReason;
 
 }
