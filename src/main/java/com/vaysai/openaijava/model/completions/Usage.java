@@ -9,6 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usage {
+
     @ToString.Include(name="prompt_tokens")
     private int promptTokens;
 
