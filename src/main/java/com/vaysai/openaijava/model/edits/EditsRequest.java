@@ -1,5 +1,7 @@
 package com.vaysai.openaijava.model.edits;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.lang.annotation.Inherited;
@@ -8,6 +10,7 @@ import java.lang.annotation.Inherited;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EditsRequest {
     /**
      * ID of the model to use. You can use the List models API to see all of your available models, or see our Model
@@ -27,7 +30,7 @@ public class EditsRequest {
     /**
      * How many edits to generate for the input and instruction.
      */
-    @ToString.Include(name="n")
+    @JsonProperty("n")
     private int numberOfEdits;
     /**
      * What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative
@@ -39,6 +42,6 @@ public class EditsRequest {
      * the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass
      * are considered.
      */
-    @ToString.Include(name="top_p")
+    @JsonProperty("top_p")
     private double topP;
 }

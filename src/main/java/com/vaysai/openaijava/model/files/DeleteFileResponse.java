@@ -14,13 +14,3 @@ public class DeleteFileResponse {
     private String object;
     private boolean deleted;
 }
-
-/*
-{
-        "id": "file-XjGxS3KTG0uNmNOK362iJua3",
-        "object": "file",
-        "deleted": true
-        }
-
- */
-

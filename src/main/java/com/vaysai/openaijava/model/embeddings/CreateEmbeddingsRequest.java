@@ -1,10 +1,12 @@
 package com.vaysai.openaijava.model.embeddings;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateEmbeddingsRequest {
     /**
      * ID of the model to use. You can use the List models API to see all of your available models, or see our Model

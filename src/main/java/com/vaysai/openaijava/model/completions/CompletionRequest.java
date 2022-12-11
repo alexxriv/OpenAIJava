@@ -3,7 +3,6 @@ package com.vaysai.openaijava.model.completions;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
 import java.util.Map;
 
 @Builder
@@ -41,7 +40,7 @@ public class CompletionRequest {
     /**
      * How many completions to generate for each prompt.
      */
-    @ToString.Include(name="n")
+    @JsonProperty("n")
     private Integer numberOfCompletions;
     /**
      * Whether to stream back partial progress. If set, tokens will be sent as data-only server-sent events as they
@@ -53,7 +52,7 @@ public class CompletionRequest {
      * if logprobs is 5, the API will return a list of the 5 most likely tokens. The API will always return the
      * logprob of the sampled token, so there may be up to logprobs+1 elements in the response.
      */
-    @ToString.Include(name="logprobs")
+    @JsonProperty("logprobs")
     private Integer logProbabilities;
     /**
      * Echo back the prompt in addition to the completion
@@ -68,46 +67,27 @@ public class CompletionRequest {
      * Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the
      * stop sequence.
      */
-    @ToString.Include(name="presence_penalty")
+    @JsonProperty("presence_penalty")
     private Double presencePenalty;
     /**
      * Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text
      * so far, decreasing the model's likelihood to repeat the same line verbatim.
      */
-    @ToString.Include(name="frequency_penalty")
+    @JsonProperty("frequency_penalty")
     private Double frequencyPenalty;
     /**
      * Generates best_of completions server-side and returns the "best" (the one with the highest log probability per
      * token). Results cannot be streamed.
      */
-    @ToString.Include(name="best_of")
+    @JsonProperty("best_of")
     private Integer bestOf;
     /**
      * Modify the likelihood of specified tokens appearing in the completion.
      */
-    @ToString.Include(name="logit_bias")
+    @JsonProperty("logit_bias")
     private Map<String,Integer> logitBias;
     /**
      * A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
      */
     private String user;
-
-
-
 }
-
-
-/*
-{
-  "model": "text-davinci-003",
-  "prompt": "Say this is a test",
-  "max_tokens": 7,
-  "temperature": 0,
-  "top_p": 1,
-  "n": 1,
-  "stream": false,
-  "logprobs": null,
-  "stop": "\n"
-  "logit_bias":{"50256": -100,"556": 100}
-}
- */
