@@ -2,10 +2,6 @@
 spring:
   application:
     name: openAI-api-client
-
----
-
-spring:
   profiles: dev, stage
 
 feign:

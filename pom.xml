@@ -6,11 +6,13 @@
 	<artifactId>openAIJava</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>openAIJava</name>
+
 	<description>OpenAI library client</description>
 	<packaging>jar</packaging>
 
 
 	<properties>
+		<spring-version>6.0.2</spring-version>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
 		<maven.compiler.source>17</maven.compiler.source>
@@ -18,6 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
 		<dependency>
@@ -26,23 +29,16 @@
 			<version>3.1.5</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-client</artifactId>
-			<version>5.6.0</version>
-		</dependency>
-
-
 		<!-- https://mvnrepository.com/artifact/io.github.openfeign.form/feign-form -->
 		<dependency>
 			<groupId>io.github.openfeign.form</groupId>
 			<artifactId>feign-form</artifactId>
 			<version>3.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.11.1</version>
 		</dependency>
 
 		<!-- Others -->
@@ -52,6 +48,34 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<version>2.6.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.1</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!--TEST -->
+		<!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+
+		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+
 
 
 	</dependencies>

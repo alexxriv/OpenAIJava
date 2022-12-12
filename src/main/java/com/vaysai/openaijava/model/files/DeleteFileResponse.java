@@ -1,16 +1,16 @@
-package com.vaysai.openaijava.model.response.models;
+package com.vaysai.openaijava.model.files;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
-@lombok.Data
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Data {
+@Builder
+public class DeleteFileResponse {
     private String id;
     private String object;
-    private String owned_by;
-    private String permission;
+    private boolean deleted;
 }
