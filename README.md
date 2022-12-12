@@ -17,14 +17,14 @@ Features
 -   Implementation of response objects to easily interact with API responses.
 -   Comprehensive integration tests demonstrating a number of the above scenarios
 
-
 Pending
 --------
 - Utils library with some frequent used constant variables. For example, the list of available models
 - CreateImageEditRequest and CreateImageVariationRequest contains parameter `response_format` which should be renamed to match Java standards. (JsonProperty won't work since POJO isn't sent as json)
 
 
-This library has four runtime dependencies:
+It has four runtime dependencies:
+
 
 -   [OpenFeign](https://spring.io/projects/spring-cloud-openfeign) for its
     reactive-functional API
@@ -58,6 +58,7 @@ Java:
 ```
 
 Use the @EnableOpenAIAPI annotation in your main class
+
 ```java
 @EnableOpenAIApiClient
 @SpringApplication
