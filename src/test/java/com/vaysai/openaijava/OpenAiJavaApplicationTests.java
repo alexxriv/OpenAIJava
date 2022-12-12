@@ -9,19 +9,32 @@ import com.vaysai.openaijava.model.completions.CreateCompletionRequest;
 import com.vaysai.openaijava.model.completions.CreateCompletionResponse;
 import com.vaysai.openaijava.model.edits.CreateEditRequest;
 import com.vaysai.openaijava.model.edits.CreateEditResponse;
+import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsRequest;
 import com.vaysai.openaijava.model.images.*;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import com.vaysai.openaijava.model.models.RetrieveModelResponse;
 import lombok.extern.log4j.Log4j2;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.internal.util.io.IOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Objects;
 
 @Log4j2
 @EnableOpenAIClient
@@ -37,19 +50,21 @@ class OpenAiJavaApplicationTests {
 
 	}
 
+	//PASSED
 	void listModels(){
 
 		ListModelsResponse listModelsResponse = openAIClient.listModels();
 		log.info(listModelsResponse);
 	}
 
-	@Test
+	//Passed
 	void retrieveModel(){
 
 		RetrieveModelResponse retrieveModelResponse = openAIClient.retrieveModel("text-davinci-003");
 		log.info(retrieveModelResponse);
 	}
 
+	//PASSED
 	void createCompletion(){
 		CreateCompletionRequest createCompletionRequest = CreateCompletionRequest
 				.builder()
@@ -62,6 +77,7 @@ class OpenAiJavaApplicationTests {
 		log.info(createCompletionResponse.getChoices().get(0).getText());
 	}
 
+	//PASSED
 	void createEdit(){
 		CreateEditRequest request = CreateEditRequest.builder()
 				.model("text-davinci-edit-001")
@@ -75,35 +91,48 @@ class OpenAiJavaApplicationTests {
 	}
 
 
+	//PASSED
 	void createImage(){
 		CreateImageRequest request = CreateImageRequest.builder()
 				.prompt("A cute baby sea otter")
 				.numberOfImages(2)
 				.size("1024x1024").build();
 
-		CreateImageResponse response = openAIClient.createImage(request);
-		log.info(response);
-
+		//CreateImageResponse response = openAIClient.createImage(request);
 	}
+	private static String FILE_NAME = "fileupload.txt";
 
-	void createImageEdit(){
+
+	//PASSED
+	void createImageEdit() throws IOException{
+
+		MultipartFile image = new MockMultipartFile("image.png","image.png", "image/png", new FileInputStream(new File("src/test/resources/image.png")));
+		MultipartFile mask = new MockMultipartFile("mask.png","mask.png", "image/png", new FileInputStream(new File("src/test/resources/mask.png")));
+
+		Assertions.assertNotNull(image);
+		//Assertions.assertNotNull(mask);
 		CreateImageEditRequest request = CreateImageEditRequest.builder()
-				.image("@otter.png")
-				.mask("@mask.png")
-				.prompt("A cute sea otter waering a beret")
+				.image(image)
+				.mask(mask)
+				.prompt("A golden apple in the middle of space")
 				.size("1024x1024")
 				.build();
-		CreateImageEditResponse response = openAIClient.createImageEdit(request);
 
+		CreateImageEditResponse response = openAIClient.createImageEdit(request);
 		log.info(response);
+
 
 	}
 
 
-	void createImageVariation(){
+
+	//PASSED
+	void createImageVariation() throws IOException{
+		MultipartFile image = new MockMultipartFile("image.png","image.png", "image/png", new FileInputStream(new File("src/test/resources/image.png")));
+
 		CreateImageVariationRequest request = CreateImageVariationRequest.builder()
-				.image("@otte.png")
-				.numberOfImages(2)
+				.image(image)
+				.n(2)
 				.size("1024x1024")
 				.build();
 
@@ -113,6 +142,7 @@ class OpenAiJavaApplicationTests {
 	}
 
 	void createEmbeddings(){
+
 
 	}
 

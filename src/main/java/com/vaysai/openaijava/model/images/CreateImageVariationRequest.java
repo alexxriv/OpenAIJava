@@ -2,6 +2,8 @@ package com.vaysai.openaijava.model.images;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Builder
 @Data
@@ -16,14 +18,13 @@ public class CreateImageVariationRequest {
      *     image must have transparency, which will be used as the mask.
      */
     @NonNull
-    private String image;
+    private MultipartFile image;
 
 
     /**
      * The number of images to generate. Must be between 1 and 10.
      */
-    @JsonProperty("n")
-    private Integer numberOfImages;
+    private Integer n;
 
     /**
      * The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.
@@ -33,8 +34,7 @@ public class CreateImageVariationRequest {
     /**
      * The format in which the generated images are returned. Must be one of url or b64_json
      */
-    @JsonProperty("response_format")
-    private String responseFormat;
+    private String response_format;
 
     /**
      * A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. Learn more.
