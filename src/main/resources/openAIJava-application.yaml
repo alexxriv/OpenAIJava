@@ -1,13 +1,14 @@
 
 spring:
   application:
-    name: openAI-api-client
+    name: openai-client
   profiles: dev, stage
 
 feign:
   client:
     config:
-      openAIApi:
+      openai-client:
+        logger-level: full
         connect-timeout: 2000
         read-timeout: 4000
 

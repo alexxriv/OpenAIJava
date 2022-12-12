@@ -1,16 +1,15 @@
 
 spring:
   application:
-    name: openAI-api-client
+    name: openai-client
   profiles: dev, stage
-debug: false
 feign:
   client:
     config:
-      openAIApi:
-        connect-timeout: 2000
-        read-timeout: 4000
-
+      default:
+        loggerLevel: full
+        connect-timeout: 160000000
+        read-timeout: 160000000
 openAIApi:
   url: https://api.openai.com/v1
 
