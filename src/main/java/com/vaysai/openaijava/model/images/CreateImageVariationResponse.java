@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateImageEditsResponse {
+public class CreateImageVariationResponse {
     private String created;
     private List<ImageUrl> data;
 }

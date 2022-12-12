@@ -1,27 +1,27 @@
 package com.vaysai.openaijava.client;
 
-import com.vaysai.openaijava.model.completions.CompletionRequest;
-import com.vaysai.openaijava.model.edits.EditsRequest;
+import com.vaysai.openaijava.model.completions.CreateCompletionRequest;
+import com.vaysai.openaijava.model.edits.CreateEditRequest;
 import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsRequest;
 import com.vaysai.openaijava.model.files.UploadFileRequest;
 import com.vaysai.openaijava.model.finetunes.*;
-import com.vaysai.openaijava.model.images.CreateImageEditsRequest;
+import com.vaysai.openaijava.model.images.CreateImageEditRequest;
 import com.vaysai.openaijava.model.images.CreateImageRequest;
-import com.vaysai.openaijava.model.images.CreateImageVariationsRequest;
-import com.vaysai.openaijava.model.moderations.CreateModerationsRequest;
-import com.vaysai.openaijava.model.completions.CompletionResponse;
-import com.vaysai.openaijava.model.edits.EditsResponse;
+import com.vaysai.openaijava.model.images.CreateImageVariationRequest;
+import com.vaysai.openaijava.model.moderations.CreateModerationRequest;
+import com.vaysai.openaijava.model.completions.CreateCompletionResponse;
+import com.vaysai.openaijava.model.edits.CreateEditResponse;
 import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsResponse;
 import com.vaysai.openaijava.model.files.DeleteFileResponse;
 import com.vaysai.openaijava.model.files.ListFilesResponse;
 import com.vaysai.openaijava.model.files.RetrieveFileResponse;
 import com.vaysai.openaijava.model.files.UploadFilesResponse;
-import com.vaysai.openaijava.model.images.CreateImageEditsResponse;
+import com.vaysai.openaijava.model.images.CreateImageEditResponse;
 import com.vaysai.openaijava.model.images.CreateImageResponse;
-import com.vaysai.openaijava.model.images.CreateImageVariationsResponse;
+import com.vaysai.openaijava.model.images.CreateImageVariationResponse;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import com.vaysai.openaijava.model.models.RetrieveModelResponse;
-import com.vaysai.openaijava.model.moderations.CreateModerationsResponse;
+import com.vaysai.openaijava.model.moderations.CreateModerationResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,29 +42,32 @@ public interface OpenAIClient {
     //Completions
 
     @PostMapping(value = "/completions", consumes = "application/json")
-    CompletionResponse createCompletion(CompletionRequest completionRequest);
+    CreateCompletionResponse createCompletion(CreateCompletionRequest createCompletionRequest);
 
     //Edits
 
     @PostMapping(value="/edits", consumes = "application/json")
-    EditsResponse createEdit(EditsRequest editsRequest);
+    CreateEditResponse createEdit(CreateEditRequest createEditRequest);
 
     //Images
 
     @PostMapping(value="/images/generations",consumes = "application/json")
-    CreateImageResponse createImageGenerations(CreateImageRequest createImageReques);
+    CreateImageResponse createImage(CreateImageRequest createImageRequest);
 
-    @PostMapping(value="/images/edits",consumes = "application/json")
-    CreateImageEditsResponse createImageEdits(CreateImageEditsRequest createImageEditsRequest);
+    @PostMapping(value="/images/edits",consumes = "multipart/form-data")
+    CreateImageEditResponse createImageEdit(CreateImageEditRequest createImageEditRequest);
 
-    @PostMapping(value="/images/variations",consumes = "application/json")
-    CreateImageVariationsResponse createdImageVariations(CreateImageVariationsRequest createdImageVariationsRequest);
+    @PostMapping(value="/images/variations",consumes = "multipart/form-data")
+    CreateImageVariationResponse createdImageVariation(CreateImageVariationRequest createdImageVariationsRequest);
 
 
     //Embeddings
 
     @PostMapping(value="/embeddings",consumes = "application/json")
     CreateEmbeddingsResponse createEmbeddings(CreateEmbeddingsRequest createEmbeddingsRequest);
+
+
+    //Files
 
     @GetMapping(value="/files", consumes = "application/json")
     ListFilesResponse listFiles();
@@ -78,11 +81,14 @@ public interface OpenAIClient {
     @GetMapping(value="/files/{file_id}", consumes = "application/json")
     RetrieveFileResponse retrieveFile(@PathVariable("file_id") String fileId);
 
-    @GetMapping(value="/files/{file_id}/content}", consumes="application/json")
+    @GetMapping(value="/files/{file_id}/content", consumes="application/json")
     ResponseEntity<?> retrieveFileContent(@PathVariable("file_id") String fileId);
 
+
+    //Fine Tunes
+
     @PostMapping(value="/fine-tunes", consumes="application/json")
-    CreateFineTuneResponse createFileTune(CreateFineTuneRequest createFileTuneRequest);
+    CreateFineTuneResponse createFineTune(CreateFineTuneRequest createFineTuneRequest);
 
     @GetMapping(value="/fine-tunes", consumes="application/json")
     ListFineTuneResponse listFineTunes();
@@ -94,16 +100,15 @@ public interface OpenAIClient {
     CancelFineTuneResponse cancelFineTune(@PathVariable("fine_tune_id") String fineTuneId);
 
     @GetMapping(value="/fine-tunes/{fine_tune_id}/events", consumes = "application/json")
-    ListFineTuneEventsResponse listFineTunes(@PathVariable("fine_tune_id") String fineTuneId);
+    ListFineTuneEventsResponse listFineTuneEvents(@PathVariable("fine_tune_id") String fineTuneId);
 
     @DeleteMapping(value="/models/{model}", consumes = "application/json")
     DeleteFineTuneModelResponse deleteFineTuneModel(@PathVariable("model") String model);
 
 
-    @PostMapping(value="/moderations",consumes = "application/json")
-    CreateModerationsResponse createModerations(CreateModerationsRequest createModerationsRequest);
+    //Moderations
 
-    @PostMapping(value="/fine-tunes",consumes = "application/json")
-    CreateFineTuneResponse createFineTunes(CreateFineTuneRequest createFineTuneRequest);
+    @PostMapping(value="/moderations",consumes = "application/json")
+    CreateModerationResponse createModeration(CreateModerationRequest createModerationRequest);
 
 }

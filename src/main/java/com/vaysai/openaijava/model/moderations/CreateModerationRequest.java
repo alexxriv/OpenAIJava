@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateModerationsRequest {
+public class CreateModerationRequest {
 
     /**
      * ID of the model to use. You can use the List models API to see all of your available models,

@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateImageVariationsRequest {
+public class CreateImageVariationRequest {
 
     /**
      *     The image to edit. Must be a valid PNG file,

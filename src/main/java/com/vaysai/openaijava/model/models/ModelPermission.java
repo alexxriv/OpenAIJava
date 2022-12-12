@@ -18,26 +18,26 @@ public class ModelPermission {
     private String created;
 
     @JsonProperty("allow_create_engine")
-    private String allowCreateEngine;
+    private Boolean allowCreateEngine;
 
     @JsonProperty("allow_sampling")
-    private String allowSampling;
+    private Boolean allowSampling;
 
     @JsonProperty("allow_logprobs")
-    private String allowLogprobs;
+    private Boolean allowLogprobs;
 
     @JsonProperty("allow_search_indices")
-    private String allowSearchIndices;
+    private Boolean allowSearchIndices;
 
     @JsonProperty("allow_view")
-    private String allowView;
+    private Boolean allowView;
 
     @JsonProperty("allow_fine_tunning")
-    private String allowFineTunning;
+    private Boolean allowFineTunning;
 
     private String organization;
     private String group;
 
     @JsonProperty("is_blocking")
-    private String isBlocking;
+    private Boolean isBlocking;
 }

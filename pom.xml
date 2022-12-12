@@ -55,21 +55,24 @@
 			<scope>test</scope>
 			<version>2.6.6</version>
 		</dependency>
-
-		<!--TEST -->
-		<!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.4.0</version>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.1</version>
 			<scope>test</scope>
 		</dependency>
 
+
+		<!--TEST -->
+		<!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
+
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.1.214</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 

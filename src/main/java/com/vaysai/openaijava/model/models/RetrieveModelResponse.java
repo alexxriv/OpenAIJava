@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -20,5 +22,9 @@ public class RetrieveModelResponse {
     @JsonProperty("owned_by")
     private String ownedBy;
 
-    private ModelPermission modelPermission;
+    @JsonProperty("permission")
+    private List<ModelPermission> modelPermissions;
+
+    private String root;
+    private String parent;
 }

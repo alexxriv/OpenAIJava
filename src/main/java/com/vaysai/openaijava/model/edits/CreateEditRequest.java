@@ -4,14 +4,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.lang.annotation.Inherited;
-
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EditsRequest {
+public class CreateEditRequest {
     /**
      * ID of the model to use. You can use the List models API to see all of your available models, or see our Model
      * overview for descriptions of them.

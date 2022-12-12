@@ -1,21 +1,18 @@
-package com.vaysai.openaijava.model.edits;
-
+package com.vaysai.openaijava.model.moderations;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EditsResponse {
-    private String object;
-    private String created;
-    private List<Choice> choices;
-    private Usage usage;
+public class CreateModerationResponse {
+    private String d;
+    private String model;
+    private Results results;
+    // private List<> Pendiente
 }

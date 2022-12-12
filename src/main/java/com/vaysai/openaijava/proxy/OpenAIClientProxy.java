@@ -5,12 +5,14 @@ import com.vaysai.openaijava.model.OpenAIClientResponse;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 @Log4j2
 public class OpenAIClientProxy {
+
     private final OpenAIClient openAIClient;
 
     public OpenAIClientResponse<ListModelsResponse> getModels() {

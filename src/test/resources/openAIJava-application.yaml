@@ -3,8 +3,7 @@ spring:
   application:
     name: openAI-api-client
   profiles: dev, stage
-  autoconfigure.exclude: org.springframework.boot.sql.init.DatabaseInitializationMode
-debug: true
+debug: false
 feign:
   client:
     config:

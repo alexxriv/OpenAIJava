@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateImageEditsRequest {
+public class CreateImageEditRequest {
 
     /**
      *     A text description of the desired image(s). The maximum length is 1000 characters.
