@@ -3,28 +3,25 @@ package com.vaysai.openaijava;
 
 import com.vaysai.openaijava.annotation.EnableOpenAIClient;
 import com.vaysai.openaijava.client.OpenAIClient;
-import com.vaysai.openaijava.configuration.OpenAIClientConfiguration;
 import com.vaysai.openaijava.configuration.YamlPropertySourceFactory;
 import com.vaysai.openaijava.model.completions.CreateCompletionRequest;
 import com.vaysai.openaijava.model.completions.CreateCompletionResponse;
 import com.vaysai.openaijava.model.edits.CreateEditRequest;
 import com.vaysai.openaijava.model.edits.CreateEditResponse;
 import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsRequest;
+import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsResponse;
+import com.vaysai.openaijava.model.files.ListFilesResponse;
+import com.vaysai.openaijava.model.files.UploadFileRequest;
+import com.vaysai.openaijava.model.files.UploadFilesResponse;
 import com.vaysai.openaijava.model.images.*;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import com.vaysai.openaijava.model.models.RetrieveModelResponse;
 import lombok.extern.log4j.Log4j2;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.internal.util.io.IOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -33,8 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.Objects;
 
 @Log4j2
 @EnableOpenAIClient
@@ -46,25 +41,22 @@ class OpenAiJavaApplicationTests {
 
 	@Autowired
 	OpenAIClient openAIClient;
-	public void contextLoads() {
 
-	}
-
-	//PASSED
+	@Test
 	void listModels(){
 
 		ListModelsResponse listModelsResponse = openAIClient.listModels();
 		log.info(listModelsResponse);
 	}
 
-	//Passed
+	@Test
 	void retrieveModel(){
 
 		RetrieveModelResponse retrieveModelResponse = openAIClient.retrieveModel("text-davinci-003");
 		log.info(retrieveModelResponse);
 	}
 
-	//PASSED
+	@Test
 	void createCompletion(){
 		CreateCompletionRequest createCompletionRequest = CreateCompletionRequest
 				.builder()
@@ -77,7 +69,7 @@ class OpenAiJavaApplicationTests {
 		log.info(createCompletionResponse.getChoices().get(0).getText());
 	}
 
-	//PASSED
+	@Test
 	void createEdit(){
 		CreateEditRequest request = CreateEditRequest.builder()
 				.model("text-davinci-edit-001")
@@ -91,19 +83,19 @@ class OpenAiJavaApplicationTests {
 	}
 
 
-	//PASSED
+	@Test
 	void createImage(){
 		CreateImageRequest request = CreateImageRequest.builder()
 				.prompt("A cute baby sea otter")
 				.numberOfImages(2)
 				.size("1024x1024").build();
 
-		//CreateImageResponse response = openAIClient.createImage(request);
+		CreateImageResponse response = openAIClient.createImage(request);
+		log.info(response);
 	}
-	private static String FILE_NAME = "fileupload.txt";
 
 
-	//PASSED
+	@Test
 	void createImageEdit() throws IOException{
 
 		MultipartFile image = new MockMultipartFile("image.png","image.png", "image/png", new FileInputStream(new File("src/test/resources/image.png")));
@@ -126,7 +118,7 @@ class OpenAiJavaApplicationTests {
 
 
 
-	//PASSED
+	@Test
 	void createImageVariation() throws IOException{
 		MultipartFile image = new MockMultipartFile("image.png","image.png", "image/png", new FileInputStream(new File("src/test/resources/image.png")));
 
@@ -141,28 +133,54 @@ class OpenAiJavaApplicationTests {
 		log.info(response);
 	}
 
+
+	@Test
 	void createEmbeddings(){
 
+		CreateEmbeddingsRequest request = CreateEmbeddingsRequest.builder()
+				.model("text-similarity-babbage-001")
+				.input("The food was delicious and the waiter was in a good mood")
+				.build();
+
+		CreateEmbeddingsResponse response = openAIClient.createEmbeddings(request);
+		log.info(response);
+
 
 	}
 
+	@Test
 	void listFiles(){
 
+		ListFilesResponse response = openAIClient.listFiles();
+
+		log.info(response);
 	}
 
-	void uploadFile(){
+	@Test
+	void uploadFile() throws IOException{
+		MultipartFile image = new MockMultipartFile("data.jsonl","data.jsonl", "application/x-ndjson", new FileInputStream(new File("src/test/resources/data.jsonl")));
+		UploadFileRequest request = UploadFileRequest.builder()
+				.file(image)
+				.purpose("fine-tune")
+				.build();
+		UploadFilesResponse response = openAIClient.uploadFile(request);
+
+		log.info(response);
 
 	}
 
 
+	@Test
 	void deleteFile(){
 
 	}
 
-	void dretrieveFile(){
+	@Test
+	void retrieveFile(){
 
 	}
 
+	@Test
 	void retrieveFileContent(){
 
 	}
@@ -172,11 +190,11 @@ class OpenAiJavaApplicationTests {
 
 	}
 
-	void listfineTune(){
+	void listFineTune(){
 
 	}
 
-	void retrieveFineTUjne8(){
+	void retrieveFineTune(){
 
 	}
 
