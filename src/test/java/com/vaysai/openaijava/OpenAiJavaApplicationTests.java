@@ -10,9 +10,7 @@ import com.vaysai.openaijava.model.edits.CreateEditRequest;
 import com.vaysai.openaijava.model.edits.CreateEditResponse;
 import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsRequest;
 import com.vaysai.openaijava.model.embeddings.CreateEmbeddingsResponse;
-import com.vaysai.openaijava.model.files.ListFilesResponse;
-import com.vaysai.openaijava.model.files.UploadFileRequest;
-import com.vaysai.openaijava.model.files.UploadFilesResponse;
+import com.vaysai.openaijava.model.files.*;
 import com.vaysai.openaijava.model.images.*;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import com.vaysai.openaijava.model.models.RetrieveModelResponse;
@@ -22,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -172,17 +171,25 @@ class OpenAiJavaApplicationTests {
 
 	@Test
 	void deleteFile(){
+		DeleteFileResponse response = openAIClient.deleteFile("file-qaD6okdiNT7p3siM3zFfGo5Q");
+		log.info(response);
 
 	}
 
 	@Test
 	void retrieveFile(){
 
+		RetrieveFileResponse response = openAIClient.retrieveFile("file-HcNL83etYjsrhpE1HwKMIq8e");
+
+		log.info(response);
+
 	}
 
 	@Test
 	void retrieveFileContent(){
 
+		ResponseEntity<?> response = openAIClient.retrieveFileContent("file-HcNL83etYjsrhpE1HwKMIq8e");
+		log.info(response);
 	}
 
 
