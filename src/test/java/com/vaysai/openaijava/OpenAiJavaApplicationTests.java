@@ -15,6 +15,8 @@ import com.vaysai.openaijava.model.finetunes.*;
 import com.vaysai.openaijava.model.images.*;
 import com.vaysai.openaijava.model.models.ListModelsResponse;
 import com.vaysai.openaijava.model.models.RetrieveModelResponse;
+import com.vaysai.openaijava.model.moderations.CreateModerationRequest;
+import com.vaysai.openaijava.model.moderations.CreateModerationResponse;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -180,7 +182,16 @@ class OpenAiJavaApplicationTests {
         DeleteFineTuneModelResponse response = openAIClient.deleteFineTuneModel("curie:ft-personal-2022-12-13-03-56-13");
         log.info(response);
     }
-    void createModeration() {
+	@Test
+	void createModeration(){
+		CreateModerationRequest request = CreateModerationRequest.builder()
+				.input("I want to kill them")
+				.build();
 
-    }
+		CreateModerationResponse response = openAIClient.createModeration(request);
+
+		log.info(response);
+
+	}
+
 }
