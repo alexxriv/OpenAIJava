@@ -72,7 +72,7 @@ public interface OpenAIClient {
     @GetMapping(value="/files", consumes = "application/json")
     ListFilesResponse listFiles();
 
-    @PostMapping(value="/files", consumes = "application/json")
+    @PostMapping(value="/files", consumes = "multipart/form-data")
     UploadFilesResponse uploadFile(UploadFileRequest uploadFileRequest);
 
     @DeleteMapping(value="/files/{file_id}", consumes = "application/json")

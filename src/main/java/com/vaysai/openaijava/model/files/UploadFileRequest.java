@@ -2,6 +2,7 @@ package com.vaysai.openaijava.model.files;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -13,7 +14,7 @@ public class UploadFileRequest {
      * Name of the JSON Lines file to be uploaded.
      */
     @NonNull
-    private String file;
+    private MultipartFile file;
     /**
      * The intended purpose of the uploaded documents.
      */

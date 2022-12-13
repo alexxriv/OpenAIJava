@@ -41,6 +41,48 @@ It also uses
 QuickStart
 ---------
 
+Add the following VM Options or Environment Variables to your project:
+
+```
+-Dspring.profiles.active=dev
+-DopenAI.api.key=YOUR_OPENAI_SECRET_KEY
+```
+
+Add the following yaml file named `openAIJava-application.yaml` to configure this library:
+
+```yaml
+spring:
+  application:
+    name: openai-client
+  profiles: dev, stage
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 160000000
+        read-timeout: 160000000
+openAIApi:
+  url: https://api.openai.com/v1
+
+---
+
+spring:
+  profiles: prod
+
+feign:
+  client:
+    config:
+      openaiapi:
+        connect-timeout: 1000
+        read-timeout: 2000
+
+openaiapi:
+  url: https://api.openai.com/v1
+```
+
+
+
+
 Use our [Maven](https://github.com/web3j/web3j-maven-plugin) 
 plugin that will provide the OpenAIClient object.
 
@@ -51,9 +93,9 @@ Java:
 
 ```xml
 <dependency>
-  <groupId>org.web3j</groupId>
-  <artifactId>core</artifactId>
-  <version>4.8.7</version>
+    <groupId>com.vaysai</groupId>
+    <artifactId>openaijava</artifactId>
+    <version>0.1.0</version>
 </dependency>
 ```
 
@@ -84,6 +126,9 @@ void listModels(){
     log.info(response);
 }
 ```
+
+
+
 
 License
 ------
