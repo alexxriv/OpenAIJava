@@ -7,7 +7,6 @@ feign:
   client:
     config:
       default:
-        loggerLevel: full
         connect-timeout: 160000000
         read-timeout: 160000000
 openAIApi:

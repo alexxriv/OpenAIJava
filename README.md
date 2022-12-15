@@ -5,8 +5,11 @@ OpenAIJava: Java OpenAI API
 OpenAIJava is a lightweight, highly modular, reactive, type safe Java and
 Spring Library for working with [OpenAI API](https://beta.openai.com/docs/api-reference). 
 
+
 This allows you to work with the OpenAI models, without the additional overhead of having to write your own
 integration code for the platform.
+
+
 
 
 Features
@@ -41,7 +44,7 @@ It also uses
 QuickStart
 ---------
 
-Add the following VM Options or Environment Variables to your project:
+Initialize a Spring >= 3.0.0 project and add the following VM Options or Environment Variables to your project:
 
 ```
 -Dspring.profiles.active=dev
