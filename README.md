@@ -5,11 +5,8 @@ OpenAIJava: Java OpenAI API
 OpenAIJava is a lightweight, highly modular, reactive, type safe Java and
 Spring Library for working with [OpenAI API](https://beta.openai.com/docs/api-reference). 
 
-
 This allows you to work with the OpenAI models, without the additional overhead of having to write your own
 integration code for the platform.
-
-
 
 
 Features
@@ -44,11 +41,22 @@ It also uses
 QuickStart
 ---------
 
-Initialize a Spring >= 3.0.0 project and add the following VM Options or Environment Variables to your project:
+Add the following VM Options or Environment Variables to your project:
 
 ```
 -Dspring.profiles.active=dev
 -DopenAI.api.key=YOUR_OPENAI_SECRET_KEY
+```
+
+In the case that you are using vscode, add a directory at root path named .vscode and inside a file named settings.json, paste the following so that vmargs work:
+
+```json
+{
+"java.test.config": {
+        "vmArgs": ["-Dspring.profiles.active=dev", "-DopenAI.api.key=YOUR_API_KEY"]
+    },
+}
+
 ```
 
 Add the following yaml file named `openAIJava-application.yaml` to configure this library:
