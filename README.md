@@ -48,6 +48,17 @@ Add the following VM Options or Environment Variables to your project:
 -DopenAI.api.key=YOUR_OPENAI_SECRET_KEY
 ```
 
+In the case that you are using vscode, add a directory at root path named .vscode and inside a file named settings.json, paste the following so that vmargs work:
+
+```json
+{
+"java.test.config": {
+        "vmArgs": ["-Dspring.profiles.active=dev", "-DopenAI.api.key=YOUR_API_KEY"]
+    },
+}
+
+```
+
 Add the following yaml file named `openAIJava-application.yaml` to configure this library:
 
 ```yaml
